@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PomodoroTimer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark</item>
+        <item name="colorPrimaryDark">@color/darker</item>
+        <item name="colorOnPrimary">@color/light_dark</item>
+        <item name="colorAccent">@color/independent</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorControlActivated">#4d4b5b</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SplashScreen" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/dark</item>
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+</resources>
