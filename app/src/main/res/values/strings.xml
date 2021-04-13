@@ -3,4 +3,9 @@
     <string name="hello_header_text">Before you start, please tell us your first name</string>
     <string name="your_name">Your name</string>
     <string name="finishing_button">Move on button</string>
+    <string name="name_error_empty">Your name field is empty, are you nameless? It is impossible :O</string>
+    <string name="name_error_to_short">Your name is too short, it should be at least 3 letters long!</string>
+    <string name="name_error_to_long">Your name is a bit long, it should be max. 18 letters, if your name is actually more than 18, sorry you will surely find an abbreviation :D</string>
+    <string name="name_error_wrong_chars">I can\'t believe your name contains numbers or special characters :O</string>
+    <string name="name_ok">Your name sounds great B) You can move on</string>
 </resources>
