@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PomodoroTimer</string>
     <string name="hello_header_text">Before you start, please tell us your first name</string>

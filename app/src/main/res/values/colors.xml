@@ -15,4 +15,6 @@
     <color name="green">#27d96b</color>
     <color name="red">#941b0c</color>
     <color name="independent">#4E4C67</color>
+    <color name="light_blue">#4361ee</color>
+    <color name="nty_transparent_white">#E6FFFFFF</color>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PomodoroTimer</string>
+    <string name="hello_header_text">Zanim zaczniesz, powiedz nam jak masz na imię</string>
+    <string name="your_name">Twoje imię</string>
+    <string name="finishing_button">Przycisk przejdź dalej</string>
+</resources>
