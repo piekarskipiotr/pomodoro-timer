@@ -70,4 +70,7 @@ dependencies {
     //Hilt ViewModel
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_version"
+
+    //CircularProgressBar
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
 }

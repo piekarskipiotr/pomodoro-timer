@@ -9,4 +9,5 @@
     <string name="name_error_to_long">Twoje imię jest trochę długie, powinno mieć maksymalnie 18 liter, jeśli twoje imię faktycznie ma więcej niż 18 przepraszamy na pewno znajdziesz jakiś skrót :D</string>
     <string name="name_error_wrong_chars">Nie wierzę że twoje imie zawiera cyfry lub znaki specjalne :O</string>
     <string name="name_ok">Twoje imie brzmi świetnie B) możesz przejść dalej</string>
+    <string name="user_profile">Profil</string>
 </resources>

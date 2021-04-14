@@ -17,4 +17,6 @@
     <color name="independent">#4E4C67</color>
     <color name="light_blue">#4361ee</color>
     <color name="nty_transparent_white">#E6FFFFFF</color>
+    <color name="light_red">#ff5a5f</color>
+    <color name="peach_puff">#ffdab9</color>
 </resources>
