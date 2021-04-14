@@ -44,9 +44,12 @@ class HelloActivity : AppCompatActivity() {
             intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+
+        //disable clickable at start
+        binding.finishButton.isClickable = false
     }
 
-    private fun setMessage(message: String, isErrorMessage: Boolean){
+    private fun setMessage(message: String, isErrorMessage: Boolean) {
         binding.messageText.text = message
         if (isErrorMessage){
             binding.finishButton.isClickable = false
