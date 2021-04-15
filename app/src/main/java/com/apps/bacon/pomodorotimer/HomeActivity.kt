@@ -29,13 +29,20 @@ class HomeActivity : AppCompatActivity() {
             intent = Intent(this, UserProfileActivity::class.java)
             startActivity(intent)
         }
+
+        updateStopButton(false, DISABLE_BUTTON_ALPHA)
     }
 
     private fun onTimerFinished() {
+        updateStopButton(false, DISABLE_BUTTON_ALPHA)
+        updateStartButton(true, ENABLE_BUTTON_ALPHA)
         resetUI()
     }
 
     private fun startTimer() {
+        updateStartButton(false, DISABLE_BUTTON_ALPHA)
+        updateStopButton(true, ENABLE_BUTTON_ALPHA)
+
         binding.circularProgressBar.progressMax = 1500f
         timer = object : CountDownTimer(1500000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -58,6 +65,20 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateStartButton(isClickable: Boolean, alpha: Float){
+        binding.startTimerButton.apply {
+            this.isClickable = isClickable
+            this.alpha = alpha
+        }
+    }
+
+    private fun updateStopButton(isClickable: Boolean, alpha: Float){
+        binding.stopTimerButton.apply {
+            this.isClickable = isClickable
+            this.alpha = alpha
+        }
+    }
+
     private fun resetUI() {
         binding.timerText.text = getString(R.string.time_zero)
         binding.circularProgressBar.apply {
@@ -67,5 +88,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //no possibility of going back
+    }
+
+    companion object {
+        private const val DISABLE_BUTTON_ALPHA = 0.9f
+        private const val ENABLE_BUTTON_ALPHA = 1f
     }
 }
