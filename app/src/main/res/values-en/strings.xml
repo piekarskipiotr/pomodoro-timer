@@ -10,4 +10,5 @@
     <string name="name_error_wrong_chars">I can\'t believe your name contains numbers or special characters :O</string>
     <string name="name_ok">Your name sounds great B) You can move on</string>
     <string name="user_profile">Profile</string>
+    <string name="set_session_time">Set session time:</string>
 </resources>

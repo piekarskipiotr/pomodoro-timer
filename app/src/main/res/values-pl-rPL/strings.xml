@@ -10,4 +10,5 @@
     <string name="name_error_wrong_chars">Nie wierzę że twoje imie zawiera cyfry lub znaki specjalne :O</string>
     <string name="name_ok">Twoje imie brzmi świetnie B) możesz przejść dalej</string>
     <string name="user_profile">Profil</string>
+    <string name="set_session_time">Ustaw czas sesji:</string>
 </resources>

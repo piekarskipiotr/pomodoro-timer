@@ -10,4 +10,7 @@
     <string name="name_ok">Your name sounds great B) You can move on</string>
     <string name="user_profile">Profile</string>
     <string name="time_zero" translatable="false">00:00</string>
+    <string name="twenty_five" translatable="false">25 min.</string>
+    <string name="fifty" translatable="false">50 min.</string>
+    <string name="set_session_time">Set session time:</string>
 </resources>
