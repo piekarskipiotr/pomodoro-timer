@@ -11,4 +11,6 @@
     <string name="name_ok">Twoje imie brzmi świetnie B) możesz przejść dalej</string>
     <string name="user_profile">Profil</string>
     <string name="set_session_time">Ustaw czas sesji:</string>
+    <string name="notify_title">Twoja sesja zakończyła się!</string>
+    <string name="notify_description">Powróć do aplikacji i wybierz długość przerwy lub pomiń ją.</string>
 </resources>

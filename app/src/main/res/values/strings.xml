@@ -13,4 +13,6 @@
     <string name="twenty_five" translatable="false">25 min.</string>
     <string name="fifty" translatable="false">50 min.</string>
     <string name="set_session_time">Set session time:</string>
+    <string name="notify_title">Your session is over!</string>
+    <string name="notify_description">Return to the application and select or skip the break.</string>
 </resources>

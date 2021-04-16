@@ -2,10 +2,10 @@ package com.apps.bacon.pomodorotimer
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import com.apps.bacon.pomodorotimer.databinding.ActivityHelloBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -20,22 +20,22 @@ class HelloActivity : AppCompatActivity() {
         window.statusBarColor = getColor(R.color.light_blue)
 
         binding.userNameTextInput.onTextChanged {
-            when{
-                it.isNullOrEmpty() -> setMessage(getString(R.string.name_error_empty),true)
-                it.length < 3 -> setMessage(getString(R.string.name_error_to_short),true)
-                it.length > 18 -> setMessage(getString(R.string.name_error_to_long),true)
-                it.contains(Regex("[^A-Za-z]")) -> setMessage(getString(R.string.name_error_wrong_chars), true)
-                else -> setMessage(getString(R.string.name_ok),false)
+            when {
+                it.isNullOrEmpty() -> setMessage(getString(R.string.name_error_empty), true)
+                it.length < 3 -> setMessage(getString(R.string.name_error_to_short), true)
+                it.length > 18 -> setMessage(getString(R.string.name_error_to_long), true)
+                it.contains(Regex("[^A-Za-z]")) -> setMessage(
+                    getString(R.string.name_error_wrong_chars),
+                    true
+                )
+                else -> setMessage(getString(R.string.name_ok), false)
             }
         }
 
         binding.finishButton.setOnClickListener {
-            val sharedPreference = this.getSharedPreferences(
-                "USER_INFO",
-                Context.MODE_PRIVATE
-            )
+            val sharedPreference = this.getSharedPreferences("USER_INFO", Context.MODE_PRIVATE)
             val userName = binding.userNameTextInput.text.toString().trim()
-            with(sharedPreference.edit()){
+            with(sharedPreference.edit()) {
                 putString("USER_NAME", userName)
                 putBoolean("FIRST_RUN", false)
                 apply()
@@ -51,7 +51,7 @@ class HelloActivity : AppCompatActivity() {
 
     private fun setMessage(message: String, isErrorMessage: Boolean) {
         binding.messageText.text = message
-        if (isErrorMessage){
+        if (isErrorMessage) {
             binding.finishButton.isClickable = false
             binding.finishButton.alpha = 0.6f
         } else {

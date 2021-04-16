@@ -11,4 +11,6 @@
     <string name="name_ok">Your name sounds great B) You can move on</string>
     <string name="user_profile">Profile</string>
     <string name="set_session_time">Set session time:</string>
+    <string name="notify_title">Your session is over!</string>
+    <string name="notify_description">Return to the application and select or skip the break.</string>
 </resources>
