@@ -11,8 +11,10 @@
     <string name="name_ok">Your name sounds great B) You can move on</string>
     <string name="user_profile">Profile</string>
     <string name="set_session_time">Set session time:</string>
-    <string name="notify_title">Your session is over!</string>
-    <string name="notify_description">Return to the application and select or skip the break.</string>
+    <string name="session_notify_title">Your session is over!</string>
+    <string name="session_notify_description">Return to the application and select or skip the break.</string>
+    <string name="break_notify_title">Your break is over!</string>
+    <string name="break_notify_description">Return to the application and start next session.</string>
     <string name="session_dialog_header_text">You have completed the session!</string>
     <string name="session_dialog_second_text">Take a break or if you want you can skip it and start another session.</string>
     <string name="skip_break">Skip the break</string>

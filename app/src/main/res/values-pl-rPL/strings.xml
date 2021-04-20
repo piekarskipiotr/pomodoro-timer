@@ -11,8 +11,10 @@
     <string name="name_ok">Twoje imie brzmi świetnie B) możesz przejść dalej</string>
     <string name="user_profile">Profil</string>
     <string name="set_session_time">Ustaw czas sesji:</string>
-    <string name="notify_title">Twoja sesja zakończyła się!</string>
-    <string name="notify_description">Powróć do aplikacji i wybierz długość przerwy lub pomiń ją.</string>
+    <string name="session_notify_title">Twoja sesja zakończyła się!</string>
+    <string name="session_notify_description">Wróć do aplikacji i wybierz długość przerwy lub pomiń ją.</string>
+    <string name="break_notify_title">Twoja przerwa się skończyła!</string>
+    <string name="break_notify_description">Wróć do aplikacji i rozpocznij kolejną sesję.</string>
     <string name="session_dialog_header_text">Ukończyłeś sesję!</string>
     <string name="session_dialog_second_text">Zrób przerwę lub jeśli chcesz, możesz ją pominąć i rozpocząć kolejną sesję.</string>
     <string name="skip_break">Pomiń przerwę</string>
