@@ -13,4 +13,11 @@
     <string name="set_session_time">Ustaw czas sesji:</string>
     <string name="notify_title">Twoja sesja zakończyła się!</string>
     <string name="notify_description">Powróć do aplikacji i wybierz długość przerwy lub pomiń ją.</string>
+    <string name="session_dialog_header_text">Ukończyłeś sesję!</string>
+    <string name="session_dialog_second_text">Zrób przerwę lub jeśli chcesz, możesz ją pominąć i rozpocząć kolejną sesję.</string>
+    <string name="skip_break">Pomiń przerwę</string>
+    <string name="take_short_break">Zrób 5-minutową przerwę</string>
+    <string name="take_long_break">Zrób 30-minutową przerwę</string>
+    <string name="finish_session">Zakończ sesję</string>
+    <string name="finish_icon">Ikona ukończenia</string>
 </resources>
