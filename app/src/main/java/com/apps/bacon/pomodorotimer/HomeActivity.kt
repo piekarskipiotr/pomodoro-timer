@@ -1,9 +1,6 @@
 package com.apps.bacon.pomodorotimer
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -16,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.apps.bacon.pomodorotimer.databinding.ActivityHomeBinding
+import com.apps.bacon.pomodorotimer.databinding.DialogBreakBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogCompletedSessionBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogSetTimerBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -221,6 +219,29 @@ class HomeActivity : AppCompatActivity() {
         }
 
         dialogBinding.finishButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    private fun showBreakDialog() {
+        val alertDialog: AlertDialog
+        val builder = AlertDialog.Builder(this, R.style.DialogStyle)
+        val dialogBinding = DialogBreakBinding.inflate(LayoutInflater.from(this))
+        val view = dialogBinding.root
+        builder.setView(view)
+        alertDialog = builder.create()
+        alertDialog.setCanceledOnTouchOutside(false)
+
+        dialogBinding.okButton.setOnClickListener {
+            with(sharedPreference.edit()) {
+                putBoolean(IS_BREAK_KEY, false)
+                apply()
+            }
+            val sessionTime = sharedPreference.getLong(SESSION_TIME_KEY, 0L)
+            startTimer(sessionTime)
+
             alertDialog.dismiss()
         }
 
