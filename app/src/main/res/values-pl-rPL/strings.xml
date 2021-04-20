@@ -22,4 +22,7 @@
     <string name="take_long_break">Zrób 30-minutową przerwę</string>
     <string name="finish_session">Zakończ sesję</string>
     <string name="finish_icon">Ikona ukończenia</string>
+    <string name="break_dialog_header_text">Twoja przerwa się skończyła!</string>
+    <string name="break_dialog_second_text">Zaraz rozpocznie się kolejna sesja pomodoro.</string>
+    <string name="timer_icon">Ikona licznika</string>
 </resources>
