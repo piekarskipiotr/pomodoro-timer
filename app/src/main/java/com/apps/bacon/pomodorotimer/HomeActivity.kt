@@ -20,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var soundServiceIntent: Intent
     private lateinit var binding: ActivityHomeBinding
     private lateinit var timer: CountDownTimer
     private lateinit var sharedPreference: SharedPreferences
@@ -44,6 +45,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        soundServiceIntent = Intent(this, SoundService::class.java)
         sharedPreference = this.getSharedPreferences("TIMER_INFO", Context.MODE_PRIVATE)
         createNotificationChannel()
 
@@ -122,6 +124,7 @@ class HomeActivity : AppCompatActivity() {
 
         val currentTimerState = sharedPreference.getString(TIMER_STATE_KEY, TimerState.STOPPED.name)
         var timerState = TimerState.STOPPED.name
+
         if (currentTimerState == TimerState.IN_THE_BACKGROUND.name) {
             timerState = TimerState.FINISHED_IN_THE_BACKGROUND.name
 
@@ -141,6 +144,8 @@ class HomeActivity : AppCompatActivity() {
             putString(TIMER_STATE_KEY, timerState)
             apply()
         }
+
+        startService(soundServiceIntent)
     }
 
     private fun updateUI(milliseconds: Long) {
@@ -204,6 +209,7 @@ class HomeActivity : AppCompatActivity() {
                 putInt(SESSION_COUNT_KEY, sessionCount.inc())
                 apply()
             }
+
             startTimer(sessionTime)
             alertDialog.dismiss()
         }
@@ -214,12 +220,17 @@ class HomeActivity : AppCompatActivity() {
                 putBoolean(IS_BREAK_KEY, true)
                 apply()
             }
+
             startTimer(breakTime)
             alertDialog.dismiss()
         }
 
         dialogBinding.finishButton.setOnClickListener {
             alertDialog.dismiss()
+        }
+
+        alertDialog.setOnDismissListener {
+            stopService(soundServiceIntent)
         }
 
         alertDialog.show()
@@ -243,6 +254,10 @@ class HomeActivity : AppCompatActivity() {
             startTimer(sessionTime)
 
             alertDialog.dismiss()
+        }
+
+        alertDialog.setOnDismissListener {
+            stopService(soundServiceIntent)
         }
 
         alertDialog.show()
@@ -285,6 +300,15 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //no possibility of going back
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        try {
+            stopService(Intent(this, SoundService::class.java))
+        } catch (e: Exception){
+            //service has not been started
+        }
     }
 
     override fun onPause() {
