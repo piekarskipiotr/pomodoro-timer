@@ -115,15 +115,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onTimerFinished() {
         resetUI()
-        val timerForBreak = sharedPreference.getBoolean(IS_BREAK_KEY, false)
-
-        if (timerForBreak)
-            showBreakDialog()
-        else
-            showCompletedSessionDialog()
 
         val currentTimerState = sharedPreference.getString(TIMER_STATE_KEY, TimerState.STOPPED.name)
         var timerState = TimerState.STOPPED.name
+        val timerForBreak = sharedPreference.getBoolean(IS_BREAK_KEY, false)
 
         if (currentTimerState == TimerState.IN_THE_BACKGROUND.name) {
             timerState = TimerState.FINISHED_IN_THE_BACKGROUND.name
@@ -138,6 +133,11 @@ class HomeActivity : AppCompatActivity() {
                     getString(R.string.session_notify_title),
                     getString(R.string.session_notify_description)
                 )
+        } else {
+            if (timerForBreak)
+                showBreakDialog()
+            else
+                showCompletedSessionDialog()
         }
 
         with(sharedPreference.edit()) {
@@ -250,9 +250,9 @@ class HomeActivity : AppCompatActivity() {
                 putBoolean(IS_BREAK_KEY, false)
                 apply()
             }
+
             val sessionTime = sharedPreference.getLong(SESSION_TIME_KEY, 0L)
             startTimer(sessionTime)
-
             alertDialog.dismiss()
         }
 
