@@ -304,10 +304,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        try {
-            stopService(Intent(this, SoundService::class.java))
-        } catch (e: Exception){
-            //service has not been started
+        val timerState = sharedPreference.getString(TIMER_STATE_KEY, TimerState.STOPPED.name)
+        if (timerState != TimerState.FINISHED_IN_THE_BACKGROUND.name) {
+            stopService(soundServiceIntent)
         }
     }
 
