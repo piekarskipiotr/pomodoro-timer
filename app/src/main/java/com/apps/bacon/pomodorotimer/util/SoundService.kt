@@ -1,9 +1,10 @@
-package com.apps.bacon.pomodorotimer
+package com.apps.bacon.pomodorotimer.util
 
 import android.app.Service
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
+import com.apps.bacon.pomodorotimer.R
 
 class SoundService : Service() {
     private lateinit var player: MediaPlayer

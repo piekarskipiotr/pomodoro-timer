@@ -16,6 +16,7 @@ import com.apps.bacon.pomodorotimer.databinding.ActivityHomeBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogBreakBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogCompletedSessionBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogSetTimerBinding
+import com.apps.bacon.pomodorotimer.util.SoundService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -270,7 +271,8 @@ class HomeActivity : AppCompatActivity() {
                 CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
-                lightColor = Color.RED
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+                lightColor = Color.BLUE
                 enableLights(true)
             }
 
@@ -280,6 +282,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun sendNotification(title: String, description: String) {
+        val intent = Intent(this, HomeActivity::class.java)
         val pendingIntent = TaskStackBuilder.create(this).run {
             addNextIntentWithParentStack(intent)
             getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -350,6 +353,5 @@ class HomeActivity : AppCompatActivity() {
         private const val SESSION_TIME_KEY = "SESSION_TIME"
         private const val SESSION_COUNT_KEY = "SESSION_COUNT"
         private const val IS_BREAK_KEY = "IS_BREAK"
-
     }
 }

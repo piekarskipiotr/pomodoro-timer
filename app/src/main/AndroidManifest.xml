@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PomodoroTimer"
         tools:ignore="AllowBackup">
-        <service android:name=".SoundService" />
+        <service android:name=".util.SoundService" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".HelloActivity" />
         <activity android:name=".HomeActivity" />
