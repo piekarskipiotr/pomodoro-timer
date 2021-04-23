@@ -38,4 +38,7 @@
     <string name="friday_shortcut">Pt.</string>
     <string name="saturday_shortcut">So.</string>
     <string name="sunday_shortcut">Nd.</string>
+    <string name="hey">Hej,</string>
+    <string name="your_stats_hello_text">Oto twoje statystyki</string>
+    <string name="user">Użytkowniku</string>
 </resources>

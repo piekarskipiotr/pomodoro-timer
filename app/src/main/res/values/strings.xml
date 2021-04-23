@@ -42,4 +42,7 @@
     <string name="friday_shortcut">Fr.</string>
     <string name="saturday_shortcut">Sa.</string>
     <string name="sunday_shortcut">Su.</string>
+    <string name="hey">Hey,</string>
+    <string name="your_stats_hello_text">Here are your stats</string>
+    <string name="user">User</string>
 </resources>
