@@ -25,4 +25,17 @@
     <string name="break_dialog_header_text">Your break is over!</string>
     <string name="break_dialog_second_text">Another pomodoro session is about to begin.</string>
     <string name="timer_icon">Timer icon</string>
+    <string name="completed_sessions">Completed sessions</string>
+    <string name="running_sessions">Running sessions</string>
+    <string name="personalization">Personalization</string>
+    <string name="alarm_sound">Alarm sound</string>
+    <string name="session_time">Session time</string>
+    <string name="back">Return</string>
+    <string name="monday_shortcut">Mo.</string>
+    <string name="tuesday_shortcut">Tu.</string>
+    <string name="wednesday_shortcut">We.</string>
+    <string name="thursday_shortcut">Th.</string>
+    <string name="friday_shortcut">Fr.</string>
+    <string name="saturday_shortcut">Sa.</string>
+    <string name="sunday_shortcut">Su.</string>
 </resources>

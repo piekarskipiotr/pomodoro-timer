@@ -25,4 +25,17 @@
     <string name="break_dialog_header_text">Twoja przerwa się skończyła!</string>
     <string name="break_dialog_second_text">Zaraz rozpocznie się kolejna sesja pomodoro.</string>
     <string name="timer_icon">Ikona licznika</string>
+    <string name="completed_sessions">Ukończone sesje</string>
+    <string name="running_sessions">Uruchomione sesje</string>
+    <string name="personalization">Personalizacja</string>
+    <string name="alarm_sound">Dźwięk alarmu</string>
+    <string name="session_time">Czas sesji</string>
+    <string name="back">Powrót</string>
+    <string name="monday_shortcut">Pon.</string>
+    <string name="tuesday_shortcut">Wt.</string>
+    <string name="wednesday_shortcut">Śr.</string>
+    <string name="thursday_shortcut">Czw.</string>
+    <string name="friday_shortcut">Pt.</string>
+    <string name="saturday_shortcut">So.</string>
+    <string name="sunday_shortcut">Nd.</string>
 </resources>
