@@ -1,5 +1,6 @@
 package com.apps.bacon.pomodorotimer.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -9,7 +10,7 @@ import com.apps.bacon.pomodorotimer.data.entities.WeeklyStats
 @Dao
 interface WeeklyStatsDao {
     @Query("SELECT * FROM weekly_stats ORDER BY week DESC LIMIT 1")
-    fun getCurrentWeekStats(): WeeklyStats
+    fun getCurrentWeekStats(): LiveData<WeeklyStats>
 
     @Query("SELECT MAX(week) FROM weekly_stats")
     fun getCurrentWeekNumber(): Int

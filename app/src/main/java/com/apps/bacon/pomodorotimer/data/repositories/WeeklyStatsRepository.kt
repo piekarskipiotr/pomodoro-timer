@@ -9,6 +9,8 @@ class WeeklyStatsRepository @Inject constructor(
 ) {
     fun getCurrentWeekStats() = database.weeklyStatsDao().getCurrentWeekStats()
 
+    fun getCurrentWeekNumber() = database.weeklyStatsDao().getCurrentWeekNumber()
+
     suspend fun increaseRunningSessionOfDay(day: String) = database.weeklyStatsDao().increaseRunningSessionOfDay(day)
 
     suspend fun increaseCompletedSessionOfDay(day: String) = database.weeklyStatsDao().increaseCompletedSessionOfDay(day)
