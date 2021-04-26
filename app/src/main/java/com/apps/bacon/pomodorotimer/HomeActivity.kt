@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -16,16 +17,20 @@ import com.apps.bacon.pomodorotimer.databinding.ActivityHomeBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogBreakBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogCompletedSessionBinding
 import com.apps.bacon.pomodorotimer.databinding.DialogSetTimerBinding
+import com.apps.bacon.pomodorotimer.util.DateInfo
 import com.apps.bacon.pomodorotimer.util.SoundService
+import com.apps.bacon.pomodorotimer.viewmodel.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var soundServiceIntent: Intent
     private lateinit var binding: ActivityHomeBinding
     private lateinit var timer: CountDownTimer
     private lateinit var sharedPreference: SharedPreferences
-    private var msUntilFinished: Long = 0
+    private val homeViewModel: HomeViewModel by viewModels()
 
     enum class Time(val milliseconds: Long) {
         TwentyFive(1500000),
@@ -47,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         soundServiceIntent = Intent(this, SoundService::class.java)
-        sharedPreference = this.getSharedPreferences("TIMER_INFO", Context.MODE_PRIVATE)
+        sharedPreference = this.getSharedPreferences(TIMER_PREFERENCES_KEY, Context.MODE_PRIVATE)
         createNotificationChannel()
 
         binding.startTimerButton.setOnClickListener {
@@ -94,6 +99,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun startTimer(milliseconds: Long) {
+        updateRunningStats()
         updateStartButton(false, DISABLE_BUTTON_ALPHA)
         updateStopButton(true, ENABLE_BUTTON_ALPHA)
         with(sharedPreference.edit()) {
@@ -104,7 +110,6 @@ class HomeActivity : AppCompatActivity() {
         binding.circularProgressBar.progressMax = (milliseconds / 1000).toFloat()
         timer = object : CountDownTimer(milliseconds, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                msUntilFinished = millisUntilFinished
                 updateUI(millisUntilFinished)
             }
 
@@ -116,7 +121,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onTimerFinished() {
         resetUI()
-
+        updateCompletedStats()
         val currentTimerState = sharedPreference.getString(TIMER_STATE_KEY, TimerState.STOPPED.name)
         var timerState = TimerState.STOPPED.name
         val timerForBreak = sharedPreference.getBoolean(IS_BREAK_KEY, false)
@@ -180,6 +185,18 @@ class HomeActivity : AppCompatActivity() {
             this.isClickable = isClickable
             this.alpha = alpha
         }
+    }
+
+    private fun updateRunningStats() {
+        homeViewModel.increaseRunningSessions()
+        val day = DateInfo().day()
+        homeViewModel.increaseRunningSessionsOfDay(day)
+    }
+
+    private fun updateCompletedStats() {
+        homeViewModel.increaseCompletedSessions()
+        val day = DateInfo().day()
+        homeViewModel.increaseCompletedSessionsOfDay(day)
     }
 
     private fun showCompletedSessionDialog() {
@@ -349,6 +366,7 @@ class HomeActivity : AppCompatActivity() {
         private const val CHANNEL_NAME = "POMODORO_TIMER_CHANNEL"
 
         //sharedPreference keys
+        private const val TIMER_PREFERENCES_KEY = "TIMER_INFO"
         private const val TIMER_STATE_KEY = "TIMER_STATE"
         private const val SESSION_TIME_KEY = "SESSION_TIME"
         private const val SESSION_COUNT_KEY = "SESSION_COUNT"
