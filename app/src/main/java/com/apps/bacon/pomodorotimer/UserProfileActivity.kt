@@ -1,6 +1,7 @@
 package com.apps.bacon.pomodorotimer
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -61,11 +62,13 @@ class UserProfileActivity : AppCompatActivity() {
         })
 
         binding.alarmSoundButton.setOnClickListener {
-            //startActivity
+            intent = Intent(this, SoundSettingsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.sessionTimeButton.setOnClickListener {
-            //startActivity
+            intent = Intent(this, TimeSettingsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.returnButton.setOnClickListener {

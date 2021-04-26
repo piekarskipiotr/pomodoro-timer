@@ -14,6 +14,8 @@
         tools:ignore="AllowBackup">
         <service android:name=".util.SoundService" />
         <service android:name=".util.DateService" />
+        <activity android:name=".SoundSettingsActivity" />
+        <activity android:name=".TimeSettingsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".HelloActivity" />
         <activity android:name=".HomeActivity" />
