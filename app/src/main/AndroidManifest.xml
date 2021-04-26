@@ -13,6 +13,7 @@
         android:theme="@style/Theme.PomodoroTimer"
         tools:ignore="AllowBackup">
         <service android:name=".util.SoundService" />
+        <service android:name=".util.DateService" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".HelloActivity" />
         <activity android:name=".HomeActivity" />
