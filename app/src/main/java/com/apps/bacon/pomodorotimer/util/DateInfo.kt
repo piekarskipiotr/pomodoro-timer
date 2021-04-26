@@ -20,4 +20,27 @@ class DateInfo {
 
         return DateFormat.format("dd-MM-yyyy", date) as String
     }
+
+    private fun getCurrentHour(): Int {
+        return DateFormat.format("HH", Date()).toString().toInt()
+    }
+
+    private fun getCurrentMinutes(): Int {
+        return DateFormat.format("mm", Date()).toString().toInt()
+    }
+
+    fun getTimeForNextDay(): Long {
+        val minutesToMillis = 60000L
+        val currentHour = getCurrentHour()
+        val currentMinutes = getCurrentMinutes()
+        val minutesToNextFullHour = if (currentMinutes == 0)
+            0
+        else
+            60 - currentMinutes
+
+        return if (currentHour == 23)
+            minutesToNextFullHour * minutesToMillis
+        else
+            ((24 - currentHour) * 60 + minutesToNextFullHour) * minutesToMillis
+    }
 }
