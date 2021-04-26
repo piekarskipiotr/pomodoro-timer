@@ -12,12 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class StarterViewModel @Inject constructor(
+class HelloViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val weeklyStatsRepository: WeeklyStatsRepository,
 ) : ViewModel() {
-    fun getWeekNumber() = weeklyStatsRepository.getCurrentWeekNumber()
-
     fun insertUser(user: User) = CoroutineScope(Dispatchers.Default).launch{
         userRepository.insert(user)
     }
