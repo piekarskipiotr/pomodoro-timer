@@ -75,6 +75,9 @@ class HelloActivity : AppCompatActivity() {
                 apply()
             }
 
+            val dateServiceIntent = Intent(this, DateService::class.java)
+            startService(dateServiceIntent)
+
             intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
