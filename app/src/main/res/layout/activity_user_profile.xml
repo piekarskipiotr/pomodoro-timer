@@ -74,6 +74,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/completedSessions"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/light_blue"
@@ -94,6 +95,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/runningSessions"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="24sp"
