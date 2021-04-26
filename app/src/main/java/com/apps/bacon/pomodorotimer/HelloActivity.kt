@@ -5,10 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.apps.bacon.pomodorotimer.data.entities.User
+import com.apps.bacon.pomodorotimer.data.entities.WeeklyStats
 import com.apps.bacon.pomodorotimer.databinding.ActivityHelloBinding
+import com.apps.bacon.pomodorotimer.util.DateInfo
+import com.apps.bacon.pomodorotimer.util.DateService
+import com.apps.bacon.pomodorotimer.viewmodel.HelloViewModel
 import com.google.android.material.textfield.TextInputEditText
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HelloActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHelloBinding
 
@@ -33,16 +41,43 @@ class HelloActivity : AppCompatActivity() {
         }
 
         binding.finishButton.setOnClickListener {
-            val sharedPreference = this.getSharedPreferences("USER_INFO", Context.MODE_PRIVATE)
+            val sharedPreference =
+                this.getSharedPreferences(APP_PREFERENCES_KEY, Context.MODE_PRIVATE)
             val userName = binding.userNameTextInput.text.toString().trim()
+
+            val helloViewModel: HelloViewModel by viewModels()
+            val user = User(userName, 1, 0, 0)
+            helloViewModel.insertUser(user)
+
+            val weeklyStats = WeeklyStats(
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            )
+            helloViewModel.insertWeeklyStats(weeklyStats)
+
+            val newWeekDate = DateInfo().getNextMonday()
             with(sharedPreference.edit()) {
-                putString("USER_NAME", userName)
-                putBoolean("FIRST_RUN", false)
+                putBoolean(FIRST_RUN_KEY, false)
+                putString(NEW_WEEK_DATE_KEY, newWeekDate)
                 apply()
             }
 
             intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         //disable clickable at start
@@ -71,5 +106,12 @@ class HelloActivity : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {}
         })
+    }
+
+    companion object {
+        //sharedPreference keys
+        const val APP_PREFERENCES_KEY = "APP_PREFERENCES"
+        const val FIRST_RUN_KEY = "FIRST_RUN"
+        const val NEW_WEEK_DATE_KEY = "NEW_WEEK_DATE"
     }
 }
