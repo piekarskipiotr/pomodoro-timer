@@ -46,7 +46,7 @@ class HelloActivity : AppCompatActivity() {
             val userName = binding.userNameTextInput.text.toString().trim()
 
             val helloViewModel: HelloViewModel by viewModels()
-            val user = User(userName, 1, 0, 0)
+            val user = User(userName, 1, 0, 0, 60000)
             helloViewModel.insertUser(user)
 
             val weeklyStats = WeeklyStats(

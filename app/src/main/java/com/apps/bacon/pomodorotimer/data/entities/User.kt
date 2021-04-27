@@ -17,5 +17,8 @@ data class User(
     var runningSessions: Int,
 
     @ColumnInfo(name = "completed_sessions")
-    var completedSessions: Int
+    var completedSessions: Int,
+
+    @ColumnInfo(name = "custom_time_of_session")
+    var customTimeOfSession: Long
 )

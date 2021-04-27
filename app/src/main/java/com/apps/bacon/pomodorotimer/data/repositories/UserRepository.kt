@@ -17,5 +17,9 @@ class UserRepository @Inject constructor(
 
     suspend fun increaseRunningSessions() = database.userDao().increaseRunningSessions()
 
+    fun getCustomTimeOfSession() = database.userDao().getCustomTimeOfSession()
+
+    suspend fun updateCustomTimeOfSession(time: Long) = database.userDao().updateCustomTimeOfSession(time)
+
     suspend fun insert(user: User) = database.userDao().insert(user)
 }
