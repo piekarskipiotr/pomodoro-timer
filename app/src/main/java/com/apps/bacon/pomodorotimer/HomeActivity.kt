@@ -1,5 +1,6 @@
 package com.apps.bacon.pomodorotimer
 
+import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
 import android.content.Intent
@@ -46,6 +47,7 @@ class HomeActivity : AppCompatActivity() {
         STOPPED
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -72,6 +74,19 @@ class HomeActivity : AppCompatActivity() {
             dialogBinding.fiftyMinutesChip.setOnClickListener {
                 startTimer(Time.Fifty.milliseconds)
                 setSessionInfo(Time.Fifty.milliseconds)
+                bottomSheetDialog.dismiss()
+            }
+
+            var customTimeMilliseconds = 0L
+            homeViewModel.getUserCustomTimeOfSession().observe(this, {
+                customTimeMilliseconds = it
+                dialogBinding.userMinutesChip.text =
+                    "${(customTimeMilliseconds / MINUTES_TO_MILLISECONDS_CONVERTER)} min.}"
+            })
+
+            dialogBinding.userMinutesChip.setOnClickListener {
+                startTimer(customTimeMilliseconds)
+                setSessionInfo(customTimeMilliseconds)
                 bottomSheetDialog.dismiss()
             }
         }
@@ -371,5 +386,6 @@ class HomeActivity : AppCompatActivity() {
         private const val SESSION_TIME_KEY = "SESSION_TIME"
         private const val SESSION_COUNT_KEY = "SESSION_COUNT"
         private const val IS_BREAK_KEY = "IS_BREAK"
+        private const val MINUTES_TO_MILLISECONDS_CONVERTER = 60000L
     }
 }

@@ -14,6 +14,8 @@ class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val weeklyStatsRepository: WeeklyStatsRepository
 ) : ViewModel() {
+    fun getUserCustomTimeOfSession() = userRepository.getCustomTimeOfSession()
+
     fun increaseRunningSessions() = CoroutineScope(Dispatchers.Default).launch {
         userRepository.increaseRunningSessions()
     }

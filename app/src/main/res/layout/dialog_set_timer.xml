@@ -44,6 +44,11 @@
             android:layout_height="wrap_content"
             android:text="@string/fifty" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/userMinutesChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </com.google.android.material.chip.ChipGroup>
 
 </LinearLayout>
