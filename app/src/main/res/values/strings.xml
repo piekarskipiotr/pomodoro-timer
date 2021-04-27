@@ -45,4 +45,7 @@
     <string name="hey">Hey,</string>
     <string name="your_stats_hello_text">Here are your stats</string>
     <string name="user">User</string>
+    <string name="time_settings_header_text">Set your own time for sessions</string>
+    <string name="hint_custom_time">e.g. 60 minutes</string>
+    <string name="current_custom_time">The current set time:</string>
 </resources>
