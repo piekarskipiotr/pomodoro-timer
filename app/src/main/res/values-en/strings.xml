@@ -44,4 +44,11 @@
     <string name="time_settings_header_text">Set your own time for sessions</string>
     <string name="hint_custom_time">e.g. 60 minutes</string>
     <string name="current_custom_time">The current set time:</string>
+    <string name="time_error_same">The entered value is the same as the set value</string>
+    <string name="time_error_higher">The value entered is beyond the limit, the maximum value is 60</string>
+    <string name="time_error_empty">The field is empty</string>
+    <string name="time_error_chars">Illegal characters</string>
+    <string name="time_error_value_starts_with_0">The entered value cannot start with 0</string>
+    <string name="timer_error_ok">Press the button to save</string>
+    <string name="saved">Saved!</string>
 </resources>
