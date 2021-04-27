@@ -41,4 +41,14 @@
     <string name="hey">Hej,</string>
     <string name="your_stats_hello_text">Oto twoje statystyki</string>
     <string name="user">Użytkowniku</string>
+    <string name="time_settings_header_text">Ustaw własny czas sesji</string>
+    <string name="hint_custom_time">np. 60 minut</string>
+    <string name="current_custom_time">Aktualny ustawiony czas:</string>
+    <string name="time_error_same">Wprowadzona wartość jest taka sama jak ustawiona</string>
+    <string name="time_error_higher">Wprowadzona wartość wykracza poza limit, maksymalna wartość wynosi 60</string>
+    <string name="time_error_empty">Pole jest puste</string>
+    <string name="time_error_chars">Niedozwolone znaki</string>
+    <string name="time_error_value_starts_with_0">Wprowadzona wartość nie moża zaczynać się od 0</string>
+    <string name="timer_error_ok">Kliknij przycisk aby zapisac</string>
+    <string name="saved">Zapisano!</string>
 </resources>

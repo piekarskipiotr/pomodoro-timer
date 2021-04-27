@@ -23,6 +23,12 @@ interface UserDao {
     @Query("UPDATE user SET running_sessions = running_sessions + 1")
     suspend fun increaseRunningSessions()
 
+    @Query("SELECT custom_time_of_session FROM user")
+    fun getCustomTimeOfSession(): LiveData<Long>
+
+    @Query("UPDATE user SET custom_time_of_session = :time")
+    suspend fun updateCustomTimeOfSession(time: Long)
+
     @Insert
     suspend fun insert(user: User)
 }
