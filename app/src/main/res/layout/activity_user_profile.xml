@@ -193,7 +193,7 @@
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:contentDescription="@string/logo"
-                    android:src="@drawable/ic_android" />
+                    android:src="@drawable/pomodoro_logo" />
 
             </LinearLayout>
 

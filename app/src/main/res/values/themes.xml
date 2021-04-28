@@ -15,7 +15,7 @@
 
     <style name="SplashScreen" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:windowFullscreen">true</item>
-        <item name="colorPrimary">@color/light_gray</item>
+        <item name="colorPrimary">@color/light_red</item>
         <item name="android:windowBackground">@drawable/splashscreen</item>
         <item name="android:screenOrientation">portrait</item>
     </style>
