@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PomodoroTimer</string>
     <string name="hello_header_text">Before you start, please tell us your first name</string>
@@ -51,4 +50,6 @@
     <string name="time_error_value_starts_with_0">The entered value cannot start with 0</string>
     <string name="timer_error_ok">Press the button to save</string>
     <string name="saved">Saved!</string>
+    <string name="alarm_sound_settings_header_text">Set the alarm sound</string>
+    <string name="your_own_alarm">Record your own</string>
 </resources>

@@ -51,4 +51,6 @@
     <string name="time_error_value_starts_with_0">Wprowadzona wartość nie moża zaczynać się od 0</string>
     <string name="timer_error_ok">Kliknij przycisk aby zapisac</string>
     <string name="saved">Zapisano!</string>
+    <string name="alarm_sound_settings_header_text">Ustaw dźwięk alarmu</string>
+    <string name="your_own_alarm">Nagraj własny</string>
 </resources>
