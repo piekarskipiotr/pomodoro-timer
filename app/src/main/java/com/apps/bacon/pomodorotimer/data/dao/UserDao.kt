@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.apps.bacon.pomodorotimer.data.entities.Alarm
 import com.apps.bacon.pomodorotimer.data.entities.User
 
 @Dao
@@ -31,4 +32,13 @@ interface UserDao {
 
     @Insert
     suspend fun insert(user: User)
+
+    @Query("SELECT * FROM alarms")
+    fun getAlarm(): Alarm
+
+    @Query("UPDATE alarms SET alarm_key = :alarm")
+    suspend fun updateSelectedAlarm(alarm: Int)
+
+    @Insert
+    suspend fun insertAlarm(alarm: Alarm)
 }

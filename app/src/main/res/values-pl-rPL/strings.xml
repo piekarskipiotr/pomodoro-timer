@@ -51,4 +51,11 @@
     <string name="time_error_value_starts_with_0">Wprowadzona wartość nie moża zaczynać się od 0</string>
     <string name="timer_error_ok">Kliknij przycisk aby zapisac</string>
     <string name="saved">Zapisano!</string>
+    <string name="alarm_sound_settings_header_text">Ustaw dźwięk alarmu</string>
+    <string name="your_own_alarm">Nagraj własny</string>
+    <string name="dialog_recording_header_text">Nagraj swój alarm!</string>
+    <string name="dialog_recording_secondary_text">Przytrzymaj pierwszy przycisk aby zacząć. Maksymalna długość nagrania to 10s</string>
+    <string name="hold_button">Przytrzymaj aby zacząć nagrywanie</string>
+    <string name="exit_button">Wyjdź</string>
+    <string name="recording_on_start_message">Rozpoczęto nagrywanie!</string>
 </resources>

@@ -21,5 +21,16 @@ class UserRepository @Inject constructor(
 
     suspend fun updateCustomTimeOfSession(time: Long) = database.userDao().updateCustomTimeOfSession(time)
 
+    fun getAlarmSound(): Any {
+        val alarm = database.userDao().getAlarm()
+        return when(alarm.key){
+            2 -> alarm.alarmTwo
+            3 -> alarm.recordedAlarm!!
+            else -> alarm.alarmOne
+        }
+    }
+
+    suspend fun updateSelectedAlarm(alarmIndex: Int) = database.userDao().updateSelectedAlarm(alarmIndex)
+
     suspend fun insert(user: User) = database.userDao().insert(user)
 }

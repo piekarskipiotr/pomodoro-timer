@@ -3,10 +3,17 @@ package com.apps.bacon.pomodorotimer.util
 import android.app.Service
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.IBinder
-import com.apps.bacon.pomodorotimer.R
+import com.apps.bacon.pomodorotimer.data.repositories.UserRepository
+import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SoundService : Service() {
+    @Inject
+    lateinit var repository: UserRepository
     private lateinit var player: MediaPlayer
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -22,9 +29,14 @@ class SoundService : Service() {
         return START_STICKY
     }
 
-    private fun initMediaPlayer(){
-        //attached sound file is for testing and in the future it will be replaced
-        player = MediaPlayer.create(this, R.raw.yourefinallyawake).apply {
+    private fun initMediaPlayer() {
+        val alarmSoundPath = repository.getAlarmSound()
+        player = if (alarmSoundPath is String) {
+            val uri = Uri.fromFile(File(alarmSoundPath))
+            MediaPlayer.create(this, uri)
+        } else {
+            MediaPlayer.create(this, alarmSoundPath as Int)
+        }.apply {
             isLooping = false
             setVolume(100f, 100f)
         }
