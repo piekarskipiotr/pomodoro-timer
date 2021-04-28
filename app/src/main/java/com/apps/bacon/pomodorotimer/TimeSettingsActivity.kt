@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.apps.bacon.pomodorotimer.databinding.ActivityTimeSettingsBinding
-import com.apps.bacon.pomodorotimer.viewmodel.TimeSettingViewModel
+import com.apps.bacon.pomodorotimer.viewmodel.TimeSettingsViewModel
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +24,7 @@ class TimeSettingsActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val timeSettingViewModel: TimeSettingViewModel by viewModels()
+        val timeSettingViewModel: TimeSettingsViewModel by viewModels()
 
         timeSettingViewModel.getCustomTimeOfSession().observe(this, {
             currentMinutes = (it / MINUTES_TO_MILLISECONDS_CONVERTER).toString()

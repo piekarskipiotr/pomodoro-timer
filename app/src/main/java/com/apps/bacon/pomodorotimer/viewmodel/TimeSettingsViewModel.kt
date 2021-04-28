@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TimeSettingViewModel @Inject constructor(
+class TimeSettingsViewModel @Inject constructor(
     private val userRepository: UserRepository,
 ) : ViewModel() {
     fun getCustomTimeOfSession() = userRepository.getCustomTimeOfSession()

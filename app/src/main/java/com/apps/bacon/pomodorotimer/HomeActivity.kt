@@ -81,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
             homeViewModel.getUserCustomTimeOfSession().observe(this, {
                 customTimeMilliseconds = it
                 dialogBinding.userMinutesChip.text =
-                    "${(customTimeMilliseconds / MINUTES_TO_MILLISECONDS_CONVERTER)} min.}"
+                    "${(customTimeMilliseconds / MINUTES_TO_MILLISECONDS_CONVERTER)} min."
             })
 
             dialogBinding.userMinutesChip.setOnClickListener {
