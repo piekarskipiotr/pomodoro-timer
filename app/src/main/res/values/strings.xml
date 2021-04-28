@@ -59,4 +59,8 @@
     <string name="alarm_1" translatable="false">Alarm 1</string>
     <string name="alarm_2" translatable="false">Alarm 2</string>
     <string name="your_own_alarm">Record your own</string>
+    <string name="dialog_recording_header_text">Record your alarm sound!</string>
+    <string name="dialog_recording_secondary_text">Hold down the first button to start. The maximum length of the recording is 10s</string>
+    <string name="hold_button">Hold to start recording</string>
+    <string name="exit_button">Exit</string>
 </resources>
