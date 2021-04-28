@@ -56,4 +56,5 @@
     <string name="dialog_recording_secondary_text">Hold down the first button to start. The maximum length of the recording is 10s</string>
     <string name="hold_button">Hold to start recording</string>
     <string name="exit_button">Exit</string>
+    <string name="recording_on_start_message">Recording has started!</string>
 </resources>

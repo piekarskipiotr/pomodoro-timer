@@ -57,4 +57,5 @@
     <string name="dialog_recording_secondary_text">Przytrzymaj pierwszy przycisk aby zacząć. Maksymalna długość nagrania to 10s</string>
     <string name="hold_button">Przytrzymaj aby zacząć nagrywanie</string>
     <string name="exit_button">Wyjdź</string>
+    <string name="recording_on_start_message">Rozpoczęto nagrywanie!</string>
 </resources>

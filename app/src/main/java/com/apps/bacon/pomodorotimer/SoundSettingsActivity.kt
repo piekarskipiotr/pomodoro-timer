@@ -8,7 +8,6 @@ import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Environment
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,8 @@ class SoundSettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySoundSettingsBinding
     private lateinit var dialogBinding: DialogRecordingBinding
     private val soundSettingsViewModel: SoundSettingsViewModel by viewModels()
-    private var timer: CountDownTimer? = null
+    private lateinit var timer: CountDownTimer
+    private lateinit var mediaRecorder: MediaRecorder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,11 +111,33 @@ class SoundSettingsActivity : AppCompatActivity() {
     }
 
     private fun startRecording() {
+        Toast.makeText(applicationContext, getString(R.string.recording_on_start_message), Toast.LENGTH_SHORT).show()
+        val outputPath = "${getExternalFilesDir(Environment.DIRECTORY_MUSIC)}/pomodoro_user_alarm.mp3"
+        mediaRecorder = MediaRecorder().apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+            setOutputFile(outputPath)
+        }
 
+        try {
+            mediaRecorder.prepare()
+            mediaRecorder.start()
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
     private fun stopRecording() {
-
+        Toast.makeText(applicationContext, getString(R.string.saved), Toast.LENGTH_SHORT).show()
+        try {
+            mediaRecorder.stop()
+            mediaRecorder.release()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun setSelectedAlarmImage(oneVisibility: Int, twoVisibility: Int, ownVisibility: Int) {
@@ -134,7 +156,7 @@ class SoundSettingsActivity : AppCompatActivity() {
 
             MotionEvent.ACTION_UP -> {
                 v.isPressed = false
-                timer?.cancel()
+                timer.cancel()
                 onTimerFinish()
             }
         }
