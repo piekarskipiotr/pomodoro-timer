@@ -28,6 +28,7 @@ class SoundSettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySoundSettingsBinding
     private lateinit var dialogBinding: DialogRecordingBinding
     private val soundSettingsViewModel: SoundSettingsViewModel by viewModels()
+    private var timer: CountDownTimer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,12 +62,52 @@ class SoundSettingsActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initRecordingDialog() {
+        val alertDialog: AlertDialog
+        val builder = AlertDialog.Builder(this, R.style.DialogStyle)
+        val view = dialogBinding.root
+        builder.setView(view)
+        alertDialog = builder.create()
+        alertDialog.setCanceledOnTouchOutside(false)
+        alertDialog.setOnDismissListener {
+            dialogBinding.circularProgressBar.progress = 0f
+            val viewGroup = view.parent as ViewGroup
+            viewGroup.removeView(view)
+        }
 
+        dialogBinding.recordButton.setOnTouchListener(recordingTouchListener)
+
+        dialogBinding.cancelButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     private fun startTimer() {
+        dialogBinding.circularProgressBar.progressMax = (RECORDING_TIME / 1000).toFloat()
+        timer = object : CountDownTimer(RECORDING_TIME, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                dialogBinding.circularProgressBar.apply {
+                    setProgressWithAnimation(progress + 1f, 1000)
+                }
+            }
+
+            override fun onFinish() {
+                onTimerFinish()
+            }
+        }.start()
         startRecording()
+    }
+
+    private fun onTimerFinish() {
+        stopRecording()
+        soundSettingsViewModel.updateSelectedAlarm(3)
+        setSelectedAlarmImage(View.GONE, View.GONE, View.VISIBLE)
+        dialogBinding.circularProgressBar.apply {
+            setProgressWithAnimation(0f, 500)
+        }
     }
 
     private fun startRecording() {
@@ -81,6 +122,24 @@ class SoundSettingsActivity : AppCompatActivity() {
         binding.alarmOneSelected.visibility = oneVisibility
         binding.alarmTwoSelected.visibility = twoVisibility
         binding.alarmOwnSelected.visibility = ownVisibility
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private val recordingTouchListener = View.OnTouchListener { v, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                v.isPressed = true
+                startTimer()
+            }
+
+            MotionEvent.ACTION_UP -> {
+                v.isPressed = false
+                timer?.cancel()
+                onTimerFinish()
+            }
+        }
+
+        true
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
@@ -107,6 +166,7 @@ class SoundSettingsActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val RECORDING_TIME = 10000L
         private const val REQUEST_CODE_PERMISSIONS = 7
         private val REQUIRED_PERMISSIONS = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
