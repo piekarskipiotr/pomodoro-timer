@@ -23,6 +23,7 @@ class TimeSettingsActivity : AppCompatActivity() {
         binding = ActivityTimeSettingsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        window.statusBarColor = getColor(R.color.peach_puff)
 
         val timeSettingViewModel: TimeSettingsViewModel by viewModels()
 

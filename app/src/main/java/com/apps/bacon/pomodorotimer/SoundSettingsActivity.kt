@@ -36,6 +36,7 @@ class SoundSettingsActivity : AppCompatActivity() {
         dialogBinding = DialogRecordingBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        window.statusBarColor = getColor(R.color.peach_puff)
 
         binding.alarmOneButton.setOnClickListener {
             setSelectedAlarmImage(View.VISIBLE, View.GONE, View.GONE)

@@ -26,6 +26,8 @@ class UserProfileActivity : AppCompatActivity() {
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        window.statusBarColor = getColor(R.color.peach_puff)
+
         val userName = profileViewModel.getUserName()
         setStatsHelloText(userName)
 

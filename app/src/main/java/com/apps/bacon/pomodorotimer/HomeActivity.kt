@@ -53,6 +53,8 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        window.statusBarColor = getColor(R.color.light_red)
+
         soundServiceIntent = Intent(this, SoundService::class.java)
         sharedPreference = this.getSharedPreferences(TIMER_PREFERENCES_KEY, Context.MODE_PRIVATE)
         createNotificationChannel()
