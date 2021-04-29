@@ -108,6 +108,8 @@ class UserProfileActivity : AppCompatActivity() {
             setDrawGridLines(true)
             axisMinimum = 0f
             axisMaximum = data.yMax + 1
+            granularity = 1.0f
+            isGranularityEnabled = true
         }
 
         //first e is empty cuz line start from 0.5 so first bar is on position 1 so -> days[1] is title for it
