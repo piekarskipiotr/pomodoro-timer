@@ -46,8 +46,8 @@ abstract class AppDatabase : RoomDatabase() {
                                 instance!!.userDao().insertAlarm(
                                     Alarm(
                                         1,
-                                        R.raw.yourefinallyawake,
-                                        R.raw.yourefinallyawake,
+                                        R.raw.hello_there,
+                                        R.raw.yo_tomato,
                                         "${context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)}/pomodoro_user_alarm.mp3"
                                     )
                                 )
