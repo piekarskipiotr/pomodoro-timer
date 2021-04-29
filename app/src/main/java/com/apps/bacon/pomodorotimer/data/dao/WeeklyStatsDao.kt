@@ -33,7 +33,7 @@ interface WeeklyStatsDao {
     @Query("UPDATE weekly_stats SET wednesday_completed = wednesday_completed + 1 WHERE week = :week")
     suspend fun increaseWednesdayCompleted(week: Int)
 
-    @Query("UPDATE weekly_stats SET tuesday_running = tuesday_running + 1 WHERE week = :week")
+    @Query("UPDATE weekly_stats SET thursday_running = thursday_running + 1 WHERE week = :week")
     suspend fun increaseThursdayRunning(week: Int)
 
     @Query("UPDATE weekly_stats SET thursday_completed = thursday_completed + 1 WHERE week = :week")
