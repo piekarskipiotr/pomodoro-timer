@@ -1,11 +1,12 @@
 package com.apps.bacon.pomodorotimer.util
 
 import android.text.format.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class DateInfo {
     fun day(): String {
-        return DateFormat.format("EEEE", Date()).toString().toLowerCase(Locale.getDefault())
+        return SimpleDateFormat("EEEE", Locale.US).format(Date()).toLowerCase(Locale.getDefault())
     }
 
     fun today(): String {
